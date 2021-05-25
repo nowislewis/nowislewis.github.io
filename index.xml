@@ -5,20 +5,5 @@
         <description>Now Is Lewis!</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Jan 2020 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://nowislewis.github.io/blogs/index.xml" rel="self" type="application/rss+xml" />
-        <item>
-    <title>first test</title>
-    <link>https://nowislewis.github.io/blogs/posts/first_test/</link>
-    <pubDate>Wed, 01 Jan 2020 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://nowislewis.github.io/blogs/posts/first_test/</guid>
-    <description><![CDATA[first test hello
-second heelo]]></description>
-</item><item>
-    <title>second</title>
-    <link>https://nowislewis.github.io/blogs/posts/second_test/</link>
-    <pubDate>Wed, 01 Jan 2020 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://nowislewis.github.io/blogs/posts/second_test/</guid>
-    <description><![CDATA[asdadsadas]]></description>
-</item></channel>
+        </channel>
 </rss>
