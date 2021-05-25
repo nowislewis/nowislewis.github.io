@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo Tanka Theme Demo</title>
+    <title>Lewis&#39;s blogs</title>
     <link>https://lewissjtu.github.io/blog/</link>
-    <description>Recent content on Hugo Tanka Theme Demo</description>
+    <description>Recent content on Lewis&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lewissjtu.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
@@ -15,6 +15,15 @@
       <guid>https://lewissjtu.github.io/blog/blog/first_test/</guid>
       <description>first test hello
 second heelo</description>
+    </item>
+    
+    <item>
+      <title>second</title>
+      <link>https://lewissjtu.github.io/blog/blog/second_test/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lewissjtu.github.io/blog/blog/second_test/</guid>
+      <description></description>
     </item>
     
   </channel>
