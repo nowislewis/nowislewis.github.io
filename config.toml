@@ -1,4 +1,4 @@
-baseurl = "https://example.com"
+baseurl = "https://lewissjtu.github.io/blog"
 title = "Hugo Tanka Theme Demo"
 author = "Nan Xiao"
 canonifyurls = true
