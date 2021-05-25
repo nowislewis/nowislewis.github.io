@@ -2,19 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://nowislewis.github.io/personal/blog/</loc>
+    <loc>https://nowislewis.github.io/personal/first_test/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://nowislewis.github.io/personal/blog/first_test/</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nowislewis.github.io/personal/</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nowislewis.github.io/personal/blog/second_test/</loc>
+    <loc>https://nowislewis.github.io/personal/second_test/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nowislewis.github.io/personal/categories/</loc>
+  </url><url>
+    <loc>https://nowislewis.github.io/personal/</loc>
   </url><url>
     <loc>https://nowislewis.github.io/personal/tags/</loc>
   </url>
