@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Now Is Lewis!</title>
+    <link>http://example.org/post/</link>
+    <description>Recent content in Posts on Now Is Lewis!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>first test</title>
+      <link>http://example.org/post/first_test/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/post/first_test/</guid>
+      <description>first test hello
+second heelo</description>
+    </item>
+    
+    <item>
+      <title>second</title>
+      <link>http://example.org/post/second_test/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/post/second_test/</guid>
+      <description>asdadsadas</description>
+    </item>
+    
+  </channel>
+</rss>
