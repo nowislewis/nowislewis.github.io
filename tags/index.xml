@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Lewis&#39;s blogs</title>
-    <link>https://lewissjtu.github.io/blog/tags/</link>
-    <description>Recent content in Tags on Lewis&#39;s blogs</description>
+    <title>Tags on Now is Lewis!</title>
+    <link>https://nowislewis.github.io/personal/tags/</link>
+    <description>Recent content in Tags on Now is Lewis!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://lewissjtu.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://nowislewis.github.io/personal/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
