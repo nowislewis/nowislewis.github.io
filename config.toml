@@ -70,7 +70,7 @@ theme = "LoveIt"
       [params.page.comment.utterances]
         enable = true
         # owner/repo
-        repo = "nowislewis/blogs"
+        repo = "nowislewis/nowislewis.github.io"
         issueTerm = "pathname"
         label = ""
         lightTheme = "github-light"
