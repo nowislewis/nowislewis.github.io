@@ -1,25 +1,4 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>所有文章 - Now Is Lewis!</title>
-        <link>https://nowislewis.github.io/posts/</link>
-        <description>所有文章 | Now Is Lewis!</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1226228799@qq.com (nowislewis)</managingEditor>
-            <webMaster>1226228799@qq.com (nowislewis)</webMaster><lastBuildDate>Wed, 01 Jan 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nowislewis.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>first test</title>
-    <link>https://nowislewis.github.io/posts/first_test/</link>
-    <pubDate>Wed, 01 Jan 2020 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://nowislewis.github.io/posts/first_test/</guid>
-    <description><![CDATA[first test hello
-second heelo]]></description>
-</item><item>
-    <title>second</title>
-    <link>https://nowislewis.github.io/posts/second_test/</link>
-    <pubDate>Wed, 01 Jan 2020 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://nowislewis.github.io/posts/second_test/</guid>
-    <description><![CDATA[asdadsadas
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - Now Is Lewis!</title><link>https://nowislewis.github.io/posts/</link><description>所有文章 | Now Is Lewis!</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1226228799@qq.com (nowislewis)</managingEditor><webMaster>1226228799@qq.com (nowislewis)</webMaster><lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://nowislewis.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>first test</title><link>https://nowislewis.github.io/posts/first_test/</link><pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate><author>作者</author><guid>https://nowislewis.github.io/posts/first_test/</guid><description>first test hello
+second heelo</description></item><item><title>second</title><link>https://nowislewis.github.io/posts/second_test/</link><pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate><author>作者</author><guid>https://nowislewis.github.io/posts/second_test/</guid><description>asdadsadas
 helloo noisahd
- Lighthouse (figure)   ]]></description>
-</item></channel>
-</rss>
+Lighthouse (figure)</description></item></channel></rss>
