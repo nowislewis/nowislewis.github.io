@@ -9,14 +9,14 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://nowislewis.github.io/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-05-26T00:00:00+08:00">
-<meta property="article:modified_time" content="2021-08-11T23:36:38+08:00">
+<meta property="article:modified_time" content="2021-08-15T15:04:49+08:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="博客的搭建结构">
 <meta name=twitter:description content="1起因 随着工作和学习中资料和知识的不断积累, 经常处于“输入多, 输出少”的状态。这种状态不利于对于知识的吸收和消化。在费曼学习法中指出,“教会">
 <meta name=application-name content="Now is Lewis">
 <meta name=apple-mobile-web-app-title content="Now is Lewis"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nowislewis.github.io/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84/><link rel=next href=https://nowislewis.github.io/posts/%E7%B1%BB%E7%9A%84%E7%AE%80%E5%8D%95%E7%AC%94%E8%AE%B0/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"博客的搭建结构","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nowislewis.github.io\/posts\/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84\/"},"genre":"posts","wordcount":1769,"url":"https:\/\/nowislewis.github.io\/posts\/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84\/","datePublished":"2021-05-26T00:00:00+08:00","dateModified":"2021-08-11T23:36:38+08:00","publisher":{"@type":"Organization","name":"nowislewis"},"author":{"@type":"Person","name":"nowislewis"},"description":""}</script></head>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nowislewis.github.io/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84/><link rel=next href=https://nowislewis.github.io/posts/%E7%B1%BB%E7%9A%84%E7%AE%80%E5%8D%95%E7%AC%94%E8%AE%B0/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"博客的搭建结构","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nowislewis.github.io\/posts\/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84\/"},"genre":"posts","wordcount":1769,"url":"https:\/\/nowislewis.github.io\/posts\/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84\/","datePublished":"2021-05-26T00:00:00+08:00","dateModified":"2021-08-15T15:04:49+08:00","publisher":{"@type":"Organization","name":"nowislewis"},"author":{"@type":"Person","name":"nowislewis"},"description":""}</script></head>
 <body header-desktop header-mobile><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -120,7 +120,7 @@
 <h2 id=搭建流程>3 搭建流程</h2>
 <p>本文最终采用的搭建流程图如下：</p>
 <p>流程图如下:</p>
-<figure><img src=/ox-hugo/20210526203423.png>
+<figure><img src=/ox-hugo/20210815145558.jpg>
 </figure>
 <h3 id=生成markdown>3.1 生成markdown</h3>
 <p>本文使用org编写，因此需要ox-hugo生成符合hugo要求的文件。如果读者熟悉markdown，可以参考hugo官方的格式要求编写文章，跳过本小节从“github repo”步骤看起。</p>
@@ -142,7 +142,7 @@
 </ol>
 <p>在对两种方式都进行体验的结果上，出于懒癌本文采用了第二种方案。</p>
 <p>GitHub pages也有两种生成方案，一种是github个人主页，另一种是项目托管主页。本文最开始采用单项目托管的方式，后来在使用loveit主题时存在图片路径不正确的问题，因此迁移到github个人主页的方式进行托管, 因此本文会主要阐述这种方案。</p>
-<figure><img src=/ox-hugo/20210526223018.png>
+<figure><img src=/ox-hugo/20210815150228.jpg>
 </figure>
 <p>共分为两步：</p>
 <ol>
@@ -162,7 +162,7 @@
 <div class=post-info>
 <div class=post-info-line>
 <div class=post-info-mod>
-<span>更新于 2021-08-11</span>
+<span>更新于 2021-08-15</span>
 </div>
 <div class=post-info-license></div>
 </div>
