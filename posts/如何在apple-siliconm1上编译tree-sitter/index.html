@@ -5,18 +5,18 @@
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
 <title>如何在Apple Silicon(M1)上编译tree-sitter - Now is Lewis</title><meta name=Description content><meta property="og:title" content="如何在Apple Silicon(M1)上编译tree-sitter">
-<meta property="og:description" content="1tree-sitter 简介 tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能. 对于编辑器的优点在于 引用官网的一段介绍: Tree-sitter is a parser">
+<meta property="og:description" content="1tree-sitter 简介 tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能. 引用官网的一段介绍: Tree-sitter is a parser generator tool and an incremental parsing library. It can build">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-08-28T00:00:00+08:00">
-<meta property="article:modified_time" content="2021-09-09T22:11:26+08:00">
+<meta property="article:modified_time" content="2021-09-09T23:53:51+08:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="如何在Apple Silicon(M1)上编译tree-sitter">
-<meta name=twitter:description content="1tree-sitter 简介 tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能. 对于编辑器的优点在于 引用官网的一段介绍: Tree-sitter is a parser">
+<meta name=twitter:description content="1tree-sitter 简介 tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能. 引用官网的一段介绍: Tree-sitter is a parser generator tool and an incremental parsing library. It can build">
 <meta name=application-name content="Now is Lewis">
 <meta name=apple-mobile-web-app-title content="Now is Lewis"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/><link rel=prev href=https://nowislewis.github.io/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84/><link rel=next href=https://nowislewis.github.io/posts/%E6%AF%95%E4%B8%9A%E4%B8%AA%E4%BA%BA%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8C%97%E4%B8%80/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"如何在Apple Silicon(M1)上编译tree-sitter","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nowislewis.github.io\/posts\/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter\/"},"genre":"posts","keywords":"project","wordcount":685,"url":"https:\/\/nowislewis.github.io\/posts\/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter\/","datePublished":"2021-08-28T00:00:00+08:00","dateModified":"2021-09-09T22:11:26+08:00","publisher":{"@type":"Organization","name":"nowislewis"},"author":{"@type":"Person","name":"nowislewis"},"description":""}</script></head>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/><link rel=prev href=https://nowislewis.github.io/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84/><link rel=next href=https://nowislewis.github.io/posts/%E6%AF%95%E4%B8%9A%E4%B8%AA%E4%BA%BA%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8C%97%E4%B8%80/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"如何在Apple Silicon(M1)上编译tree-sitter","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nowislewis.github.io\/posts\/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter\/"},"genre":"posts","keywords":"project","wordcount":670,"url":"https:\/\/nowislewis.github.io\/posts\/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter\/","datePublished":"2021-08-28T00:00:00+08:00","dateModified":"2021-09-09T23:53:51+08:00","publisher":{"@type":"Organization","name":"nowislewis"},"author":{"@type":"Person","name":"nowislewis"},"description":""}</script></head>
 <body header-desktop header-mobile><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -84,7 +84,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">如何在Apple Silicon(M1)上编译tree-sitter</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=https://github.com/nowislewis title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>nowislewis</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-08-28>2021-08-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 685 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-08-28>2021-08-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 670 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
@@ -100,7 +100,7 @@
 </ul>
 </nav></div>
 </div><div class=content id=content><h2 id=tree-sitter-简介>1 tree-sitter 简介</h2>
-<p>tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能. 对于编辑器的优点在于</p>
+<p>tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能.</p>
 <p>引用官网的一段介绍:</p>
 <p>Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited. Tree-sitter aims to be:</p>
 <ul>
@@ -117,7 +117,6 @@
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>test</span> -d rust-tree-sitter
 <span class=c1># clone 仓库</span>
 git clone https://github.com/tree-sitter/tree-sitter rust-tree-sitter
-<span class=c1># 切换分支</span>
 <span class=nb>cd</span> rust-tree-sitter <span class=o>&amp;&amp;</span> git fetch
 </code></pre></div><p>如果上述步骤都进行后, 当前目录应该是这样:</p>
 <figure><img src=/ox-hugo/2021-09-04_16-55-25_screenshot.jpg>
