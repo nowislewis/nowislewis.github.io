@@ -1,0 +1,188 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>如何在Apple Silicon(M1)上编译tree-sitter - Now is Lewis</title><meta name=Description content><meta property="og:title" content="如何在Apple Silicon(M1)上编译tree-sitter">
+<meta property="og:description" content="1tree-sitter 简介 tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能. 对于编辑器的优点在于 引用官网的一段介绍: Tree-sitter is a parser">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-08-28T00:00:00+08:00">
+<meta property="article:modified_time" content="2021-09-09T20:57:51+08:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="如何在Apple Silicon(M1)上编译tree-sitter">
+<meta name=twitter:description content="1tree-sitter 简介 tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能. 对于编辑器的优点在于 引用官网的一段介绍: Tree-sitter is a parser">
+<meta name=application-name content="Now is Lewis">
+<meta name=apple-mobile-web-app-title content="Now is Lewis"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/><link rel=prev href=https://nowislewis.github.io/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84/><link rel=next href=https://nowislewis.github.io/posts/%E6%AF%95%E4%B8%9A%E4%B8%AA%E4%BA%BA%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8C%97%E4%B8%80/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"如何在Apple Silicon(M1)上编译tree-sitter","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nowislewis.github.io\/posts\/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter\/"},"genre":"posts","keywords":"project","wordcount":685,"url":"https:\/\/nowislewis.github.io\/posts\/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter\/","datePublished":"2021-08-28T00:00:00+08:00","dateModified":"2021-09-09T20:57:51+08:00","publisher":{"@type":"Organization","name":"nowislewis"},"author":{"@type":"Person","name":"nowislewis"},"description":""}</script></head>
+<body header-desktop header-mobile><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Now is Lewis">Now is Lewis</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Now is Lewis">Now is Lewis</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">如何在Apple Silicon(M1)上编译tree-sitter</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=https://github.com/nowislewis title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>nowislewis</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-08-28>2021-08-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 685 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#tree-sitter-简介>1 tree-sitter 简介</a></li>
+<li><a href=#环境准备>2 环境准备</a></li>
+<li><a href=#开始编译>3 开始编译</a></li>
+<li><a href=#语言编译>4 语言编译</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=tree-sitter-简介>1 tree-sitter 简介</h2>
+<p>tree-sitter 是一个速度很快的语法parser, 支持incremental parsing, error recovery 等等很有用的功能. 对于编辑器的优点在于</p>
+<p>引用官网的一段介绍:</p>
+<p>Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited. Tree-sitter aims to be:</p>
+<ul>
+<li>General enough to parse any programming language</li>
+<li>Fast enough to parse on every keystroke in a text editor</li>
+<li>Robust enough to provide useful results even in the presence of syntax errors</li>
+</ul>
+<p>Dependency-free so that the runtime library (which is written in pure C) can be embedded in any application</p>
+<p>目前已经支持C/C++ Go 等几十种语言. 但官方给的二进制文件是 x86 的, 因此对于 MacBook 的arm 架构是无法使用的, 需要自己编译. tree-sitter 的依赖不多, 但在 m1 上的编译资料较少, 这里给出一个自己摸索的解决方案.</p>
+<h2 id=环境准备>2 环境准备</h2>
+<p>tree-sitter 依赖 Rust, npm 等环境, 可通过以下命令安装快速安装:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-zsh data-lang=zsh>brew install cargo git npm llvm rust
+</code></pre></div><p>后续的步骤部分参考了 <a href=https://github.com/emacs-tree-sitter/elisp-tree-sitter/issues/88 target=_blank rel="noopener noreffer">这个 issue</a> , 但它指出最新的 tree-sitter v0.20存在BUG 问题难以编译成功. 本人测试问题已经解决, 只需稍做修改即可, 因此我们直接选择最新版本:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>test</span> -d rust-tree-sitter
+<span class=c1># clone 仓库</span>
+git clone https://github.com/tree-sitter/tree-sitter rust-tree-sitter
+<span class=c1># 切换分支</span>
+<span class=nb>cd</span> rust-tree-sitter <span class=o>&amp;&amp;</span> git fetch
+</code></pre></div><p>如果上述步骤都进行后, 当前目录应该是这样:</p>
+<figure><img src=/ox-hugo/2021-09-04_16-55-25_screenshot.jpg>
+</figure>
+<h2 id=开始编译>3 开始编译</h2>
+<p>接着, 切换到 <code>cli</code> 目录:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> cli <span class=o>&amp;&amp;</span> cargo install --path .
+</code></pre></div><p>注意 <code>--path</code> 的后面有一个 <code>.</code> .</p>
+<p>这里有一个坑, 如果你像我一样设置了用 GNU/gcc 覆盖了 llvm-gcc, 就需要在 <code>.zshrc</code> 里面注释掉这些代码:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1>#alias gcc=&#39;gcc-11&#39;</span>
+<span class=c1>#alias cc=&#39;gcc-11&#39;</span>
+<span class=c1>#alias g++=&#39;g++-11&#39;</span>
+<span class=c1>#alias c++=&#39;c++-11&#39;</span>
+</code></pre></div><p>可以通过 <code>gcc --version</code> 来简单确认现在使用的版本, 结果大概是这样:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>liuyi@liuyideMacBook-Pro cli % gcc --version
+Configured with: --prefix<span class=o>=</span>/Library/Developer/CommandLineTools/usr --with-gxx-include-dir<span class=o>=</span>/usr/include/c++/4.2.1
+Apple clang version 12.0.5 <span class=o>(</span>clang-1205.0.22.9<span class=o>)</span>
+Target: arm64-apple-darwin20.6.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+</code></pre></div><h2 id=语言编译>4 语言编译</h2>
+<p>接下来的步骤涉及编辑器的实现版本, 我使用的是emacs, 涉及到elisp-tree-sitter 项目, 其他编辑器需要去找类似的版本, 步骤大同小异:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> PROJECT_DIR_YOU_USE <span class=c1># 这个替换成你的项目路径</span>
+file cor/tsc.dyn.dylib <span class=p>|</span> grep -q arm64 <span class=o>||</span> rm-rf core/tsc-dyn.dylib
+grep -q LOCAL core/DYN-VERSION <span class=o>||</span> <span class=nb>printf</span> LOCAL &gt;core/DYN-VERSION
+grep -q DYN-VERSION bin/build <span class=o>&amp;&amp;</span> sed -q <span class=s1>&#39;/DYN-VERSION/d&#39;</span> bin/build &gt;bin/build.tmp <span class=o>&amp;&amp;</span> mv bin/build.tmp bin/build <span class=o>&amp;&amp;</span> chmod +x bin/build <span class=o>||</span> :
+</code></pre></div><p>然后重建 bindings</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nv>EMACS</span><span class=o>=</span>emacs ./bin/setup <span class=o>&amp;&amp;</span> <span class=nv>EMACS</span><span class=o>=</span>emacs ./bin/build
+</code></pre></div><p>然后把相关文件添加到项目的启动路径就可以了.</p>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2021-09-09</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/ data-title="如何在Apple Silicon(M1)上编译tree-sitter" data-hashtags=project><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/ data-hashtag=project><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 WhatsApp" data-sharer=whatsapp data-url=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/ data-title="如何在Apple Silicon(M1)上编译tree-sitter" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href=javascript:void(0); title="分享到 Reddit" data-sharer=reddit data-url=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/><i class="fab fa-reddit fa-fw"></i></a><a href=javascript:void(0); title="分享到 Pocket" data-sharer=pocket data-url=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/><i class="fab fa-get-pocket fa-fw"></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/ data-title="如何在Apple Silicon(M1)上编译tree-sitter"><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Blogger" data-sharer=blogger data-url=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/ data-title="如何在Apple Silicon(M1)上编译tree-sitter" data-description><i class="fab fa-blogger fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=https://nowislewis.github.io/posts/%E5%A6%82%E4%BD%95%E5%9C%A8apple-siliconm1%E4%B8%8A%E7%BC%96%E8%AF%91tree-sitter/ data-title="如何在Apple Silicon(M1)上编译tree-sitter"><i class="fab fa-evernote fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/project/>project</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/posts/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E7%BB%93%E6%9E%84/ class=prev rel=prev title=博客的搭建结构><i class="fas fa-angle-left fa-fw"></i>博客的搭建结构</a>
+<a href=/posts/%E6%AF%95%E4%B8%9A%E4%B8%AA%E4%BA%BA%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8C%97%E4%B8%80/ class=next rel=next title='毕业个人踩坑指北(一)–"价值"篇'>毕业个人踩坑指北(一)–"价值"篇<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id=comments><div id=utterances></div><noscript>
+Please enable JavaScript to view the comments powered by <a href=https://utteranc.es/>Utterances</a>.
+</noscript></div></article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><span id=busuanzi_container_site_uv>您是本站第 <span id=busuanzi_value_site_uv></span> 位访问者</span><br><span id=busuanzi_container_site_pv>本站总访问量<span id=busuanzi_value_site_pv></span>次</span></div><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2020 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/nowislewis target=_blank>nowislewis</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript src=/lib/sharer/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{utterances:{darkTheme:"github-dark",issueTerm:"pathname",label:"",lightTheme:"github-light",repo:"nowislewis/nowislewis.github.io"}},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>
